@@ -2,7 +2,7 @@
 function breadcrumbs()
 {
     $separator = '';
-    $path = array_filter(explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+    $path = array_filter(explode('/', parse_url(urldecode($_SERVER['REQUEST_URI']), PHP_URL_PATH)));
     $base_url = ($_SERVER['HTTPS'] ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
     $breadcrumbs = array("<li><a href=\"$base_url\"><span class=\"dashicons dashicons-admin-home\"></span></a></li>");
 
@@ -10,6 +10,8 @@ function breadcrumbs()
 
     if (is_search()) {
         $breadcrumbs[] = '<li>Search</li>';
+    } elseif (is_404()) {
+        $breadcrumbs[] = '<li>404</li>';
     } else {
         foreach ($path as $x => $crumb) {
             $title = ucwords(str_replace(array('.php', '_'), Array('', ' '), $crumb));

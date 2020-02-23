@@ -220,10 +220,6 @@ input[type="search"]::-webkit-search-cancel-button {
     background-color: #f7901975;
 }
 
-.no-hover:hover {
-    background: none !important;
-}
-
 .page-item.active .page-link {
     background-color: #f79019;
     border-color: #f79019;
