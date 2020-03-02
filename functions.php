@@ -25,10 +25,20 @@ register_sidebar(array( // регистрируем бар в меню
     'after_title' => "</span>\n", //  разметка после вывода заголовка виджета
 ));
 
-register_sidebar(array( // регистрируем левую колонку, этот кусок можно повторять для добавления новых областей для виджитов
+register_sidebar(array( // регистрируем правую колонку
     'name' => 'Сайдбар', // Название в админке
     'id' => "sidebar", // идентификатор для вызова в шаблонах
     'description' => 'Обычная колонка в сайдбаре', // Описалово в админке
+    'before_widget' => '<div id="%1$s" class="widget %2$s">', // разметка до вывода каждого виджета
+    'after_widget' => "</div>\n", // разметка после вывода каждого виджета
+    'before_title' => '<strong class="widget-title">', //  разметка до вывода заголовка виджета
+    'after_title' => "</strong>\n", //  разметка после вывода заголовка виджета
+));
+
+register_sidebar(array( // регистрируем левую колонку
+    'name' => 'Виджет навигации', // Название в админке
+    'id' => "sidebar-nav", // идентификатор для вызова в шаблонах
+    'description' => 'Для виджета навигации', // Описалово в админке
     'before_widget' => '<div id="%1$s" class="widget %2$s">', // разметка до вывода каждого виджета
     'after_widget' => "</div>\n", // разметка после вывода каждого виджета
     'before_title' => '<strong class="widget-title">', //  разметка до вывода заголовка виджета
@@ -186,11 +196,38 @@ if (!class_exists('bootstrap_menu')) {
         }
     }
 }
+function is_blockchain()
+{
+    global $post;
+    $id = $post->ID;
+    if (get_post_meta($id, 'btc_page_type', true) === 'blockchain')
+        return true;
+    return false;
+}
+
+function is_version()
+{
+    global $post;
+    $id = $post->ID;
+    if (get_post_meta($id, 'btc_page_type', true) === 'version')
+        return true;
+    return false;
+}
+
+function is_method()
+{
+    global $post;
+    $id = $post->ID;
+    if (get_post_meta($id, 'btc_page_type', true) === 'method')
+        return true;
+    return false;
+}
 
 if (!function_exists('content_class_by_sidebar')) { // если ф-я уже есть в дочерней теме - нам не надо её определять
     function content_class_by_sidebar()
     { // функция для вывода класса в зависимости от существования виджетов в сайдбаре
-        if (is_active_sidebar('sidebar') && !is_front_page()) { // если есть
+        $is_method_or_version_page = is_version() || is_method();
+        if (is_active_sidebar('sidebar') && $is_method_or_version_page) { // если есть
             echo 'col col-lg-9'; // пишем класс на 80% ширины
         } else { // если нет
             echo 'col-sm-12'; // контент на всю ширину
@@ -214,22 +251,6 @@ function search_filter($query)
             )));
         }
     }
-}
-
-function is_version($id)
-{
-    if (get_post_meta($id, 'btc_page_type', true) === 'version')
-        return true;
-    else
-        return false;
-}
-
-function is_method($id)
-{
-    if (get_post_meta($id, 'btc_page_type', true) === 'method')
-        return true;
-    else
-        return false;
 }
 
 ?>

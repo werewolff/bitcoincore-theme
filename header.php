@@ -35,7 +35,7 @@ $top_menu = wp_get_nav_menu_object($locations['top']);
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <nav class="navbar navbar-expand-lg navbar-dark <? echo $top_menu->count ? '' : 'justify-content-center'?>">
+                <nav class="navbar navbar-expand-lg navbar-dark <? echo $top_menu->count ? '' : 'justify-content-center' ?>">
                     <a class="navbar-brand" href="<? echo get_bloginfo('url') ?>">
                         <? include(get_template_directory() . '/img/btc.svg');
                         echo get_bloginfo('name')
@@ -62,13 +62,7 @@ $top_menu = wp_get_nav_menu_object($locations['top']);
                     </div>
                     <? get_sidebar('menu'); ?>
                 </nav>
-
             </div>
         </div>
-        <? if (!is_front_page()) { ?>
-            <div class="row bg-white">
-                <? breadcrumbs(); ?>
-            </div>
-        <? } ?>
     </div>
 </header>

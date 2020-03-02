@@ -25,12 +25,14 @@
         <div class="<?php if (has_post_thumbnail()) { ?>col-sm-9 text-break<?php } else { ?>col-sm-12 text-break<?php } // разные классы в зависимости есть ли миниатюра ?>">
             <?php
             $content = get_the_content();
-            $content = apply_filters('the_content', $content);
             $content = wp_filter_nohtml_kses($content);
             if (strlen($content) > 150) {
                 $content = substr($content, 0, 150) . '...';
             }
-            echo !empty($content) ? $content : '';
+            if (!is_blockchain()) {
+                $content = apply_filters('the_content', $content);
+                echo $content;
+            }
             ?>
         </div>
     </div>

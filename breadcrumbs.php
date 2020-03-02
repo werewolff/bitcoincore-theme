@@ -1,6 +1,10 @@
 <?php
+
 function breadcrumbs()
 {
+    if (is_front_page()) {
+        return;
+    }
     $separator = '';
     $path = array_filter(explode('/', parse_url(urldecode($_SERVER['REQUEST_URI']), PHP_URL_PATH)));
     $base_url = ($_SERVER['HTTPS'] ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
@@ -23,6 +27,12 @@ function breadcrumbs()
         }
     }
     $breadcrumb_list = implode($separator, $breadcrumbs);
-    $breadcrumb_block = '<nav class="breadcrumbs"><div class="container"><div class="row"> <ul>' . $breadcrumb_list . '</ul></div></div></nav>';
+    $breadcrumb_block = '<div class="row"> 
+                            <div class="col-12 p-0">
+                                <nav class="breadcrumbs">
+                                    <ul>' . $breadcrumb_list . '</ul>
+                                </nav>
+                            </div>
+                        </div>';
     echo $breadcrumb_block;
 }

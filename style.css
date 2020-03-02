@@ -5,6 +5,43 @@ Description:
 Author: werewolff_
 */
 
+/* ------SCROLL------- */
+
+.menu-left::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar-button, *::-webkit-scrollbar-corner {
+    display: none;
+}
+
+.menu-left::-webkit-scrollbar-thumb {
+    border-width: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+    min-height: 2rem;
+    background: #cccccc;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+    border-radius: 10px;
+}
+
+.menu-left::-webkit-scrollbar-track {
+    background: white;
+    border: 0;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ------SCROLL-END------- */
+
 html, body {
     height: 100%;
     background-color: #fbfbfb;
