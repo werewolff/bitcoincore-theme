@@ -19,7 +19,7 @@ register_sidebar(array( // регистрируем бар в меню
     'name' => 'Справа в меню', // Название в админке
     'id' => "sidebar-menu", // идентификатор для вызова в шаблонах
     'description' => 'Для поиска', // Описалово в админке
-    'before_widget' => '<div id="%1$s" class="widget %2$s ml-auto">', // разметка до вывода каждого виджета
+    'before_widget' => '<div id="%1$s" class="widget %2$s ml-md-auto">', // разметка до вывода каждого виджета
     'after_widget' => "</div>\n", // разметка после вывода каждого виджета
     'before_title' => '<span class="widget-title">', //  разметка до вывода заголовка виджета
     'after_title' => "</span>\n", //  разметка после вывода заголовка виджета

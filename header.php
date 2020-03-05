@@ -35,14 +35,18 @@ $top_menu = wp_get_nav_menu_object($locations['top']);
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <nav class="navbar navbar-expand-lg navbar-dark <? echo $top_menu->count ? '' : 'justify-content-center' ?>">
+                <nav class="navbar navbar-expand-lg navbar-dark <? echo $top_menu->count ? '' : 'justify-content-center' ?> px-0">
+                    <button class="navbar-toggler ml-md-3 order-sm-3" type="button" data-toggle="collapse" data-target="#topnav"
+                            aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <a class="navbar-brand" href="<? echo get_bloginfo('url') ?>">
                         <? include(get_template_directory() . '/img/btc.svg');
                         echo get_bloginfo('name')
                         ?>
                     </a>
                     <? if ($top_menu->count) { ?>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnav"
+                        <button class="navbar-toggler ml-md-3 order-sm-3" type="button" data-toggle="collapse" data-target="#topnav"
                                 aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
