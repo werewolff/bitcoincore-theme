@@ -243,6 +243,10 @@ input[type="search"]::-webkit-search-cancel-button {
     cursor: pointer;
 }
 
+#left-menu{
+    display: none;
+}
+
 .post-title, .method-title, .version-title {
     padding: 0.3em;
 }
@@ -306,8 +310,11 @@ input[type="search"]::-webkit-search-cancel-button {
     display: inline-block;
 }
 
+/* Small */
 @media (max-width: 576px) {
-    .navbar:not(.justify-content-center) .navbar-brand {
+
+    .navbar-brand {
+        text-align: center;
         font-size: 1em;
     }
 

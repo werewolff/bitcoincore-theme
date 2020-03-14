@@ -18,7 +18,7 @@ function breadcrumbs()
         $breadcrumbs[] = '<li>404</li>';
     } else {
         foreach ($path as $x => $crumb) {
-            $title = ucwords(str_replace(array('.php', '_'), Array('', ' '), $crumb));
+            $title = ucfirst(str_replace(array('.php', '_', '-'), Array('', ' ', '.'), $crumb));
             if ($x != $last) {
                 $breadcrumbs[] = '<li><a href="' . $base_url . $crumb . '">' . $title . '</a></li>';
             } else {

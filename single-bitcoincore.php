@@ -9,7 +9,7 @@ get_header(); // подключаем header.php
     <section>
         <div class="container-fluid bg-white rounded">
             <div class="row h-100">
-                <div class="col col-lg-3 ml-n3">
+                <div id="left-menu" class="col col-lg-3 ml-n3 d-md-block">
                     <?php get_sidebar('nav'); ?>
                 </div>
                 <div class="col col-lg-9 p-0">
