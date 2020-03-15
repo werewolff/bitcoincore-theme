@@ -7,10 +7,6 @@ Author: werewolff_
 
 /* ------SCROLL------- */
 
-.menu-left::-webkit-scrollbar {
-    width: 10px;
-}
-
 *::-webkit-scrollbar {
     -webkit-appearance: none;
 }
@@ -19,21 +15,12 @@ Author: werewolff_
     display: none;
 }
 
-.menu-left::-webkit-scrollbar-thumb {
-    border-width: 3px;
-}
-
 *::-webkit-scrollbar-thumb {
     min-height: 2rem;
     background: #cccccc;
     background-clip: padding-box;
     border: 5px solid transparent;
     border-radius: 10px;
-}
-
-.menu-left::-webkit-scrollbar-track {
-    background: white;
-    border: 0;
 }
 
 *::-webkit-scrollbar-track {
@@ -243,22 +230,26 @@ input[type="search"]::-webkit-search-cancel-button {
     cursor: pointer;
 }
 
-#left-menu{
-    display: none;
-}
-
 .post-title, .method-title, .version-title {
     padding: 0.3em;
 }
 
-.method-title{
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+.method-title {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     background-color: rgba(247, 144, 25, 0.4588235294117647);
 }
 
-.version-title{
+.method-title::before {
+    content: '';
+}
 
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+.method-title::after {
+    content: '';
+}
+
+.version-title {
+
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     background-color: rgba(247, 144, 25, 0.4588235294117647);
 }
 
