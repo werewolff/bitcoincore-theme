@@ -10,7 +10,7 @@
 <head>
     <meta charset="<?php bloginfo('charset'); // кодировка ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=400, initial-scale=1">
+    <meta name="viewport" content="width=device-width">
     <?php /* RSS и всякое */ ?>
     <link rel="alternate" type="application/rdf+xml" title="RDF mapping" href="<?php bloginfo('rdf_url'); ?>">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php bloginfo('rss_url'); ?>">
@@ -28,14 +28,13 @@
 </head>
 <body <?php body_class(); // все классы для body ?>>
 <?
-$locations = get_nav_menu_locations();
-$top_menu = wp_get_nav_menu_object($locations['top']);
+
 ?>
 <header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <nav class="navbar navbar-expand-lg navbar-dark <? echo $top_menu->count ? '' : 'justify-content-center' ?> px-0">
+                <nav class="navbar navbar-expand-lg navbar-dark <? echo has_items_in_nav_menu('top') ? '' : 'justify-content-center' ?> px-0">
                     <button id="btn-toggle-left-menu" class="navbar-toggler d-md-none mr-3">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -44,7 +43,7 @@ $top_menu = wp_get_nav_menu_object($locations['top']);
                         echo get_bloginfo('name')
                         ?>
                     </a>
-                    <? if ($top_menu->count) { ?>
+                    <? if (has_items_in_nav_menu('top')) { ?>
                         <button class="navbar-toggler ml-md-3 order-md-2" type="button" data-toggle="collapse"
                                 data-target="#topnav"
                                 aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +59,8 @@ $top_menu = wp_get_nav_menu_object($locations['top']);
                             'menu_class' => 'top-menu', // класс для ul, первые 2 обязательны
                             'walker' => new bootstrap_menu(true) // верхнее меню выводится по разметке бутсрапа, см класс в functions.php, если по наведению субменю не раскрывать то передайте false
                         );
-                        wp_nav_menu($args); // выводим верхнее меню
+                        if (has_nav_menu('top'))
+                            wp_nav_menu($args); // выводим верхнее меню
                         ?>
                     </div>
                     <? get_sidebar('menu'); ?>

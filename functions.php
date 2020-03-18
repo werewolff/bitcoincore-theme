@@ -7,9 +7,11 @@
 
 add_theme_support('title-tag'); // теперь тайтл управляется самим вп
 
-register_nav_menus(array( // Регистрируем меню
+$menus = array(
     'top' => 'Верхнее', // Верхнее
-));
+);
+
+register_nav_menus($menus);
 
 add_theme_support('post-thumbnails'); // включаем поддержку миниатюр
 set_post_thumbnail_size(250, 150); // задаем размер миниатюрам 250x150
@@ -196,6 +198,7 @@ if (!class_exists('bootstrap_menu')) {
         }
     }
 }
+
 function is_blockchain()
 {
     global $post;
@@ -261,9 +264,20 @@ add_action('wp_default_scripts', function ($scripts) {
 });
 
 // Убираем с тега body классы
-add_filter('body_class','my_class_names');
-function my_class_names($classes) {
+add_filter('body_class', 'my_class_names');
+function my_class_names($classes)
+{
     return array();
+}
+
+function has_items_in_nav_menu($location)
+{
+    $locations = get_nav_menu_locations();
+    $top_menu = wp_get_nav_menu_object($locations[$location]);
+    if (isset($top_menu))
+        return $top_menu->count;
+    else
+        return 0;
 }
 
 ?>
