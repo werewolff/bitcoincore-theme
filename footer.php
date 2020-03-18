@@ -14,16 +14,18 @@
             <div class="col-sm-auto text-center order-first order-sm-2 footer-donate">
                 <h5>Donate</h5>
                 <div>
-                    <? include(get_template_directory() . '/img/btc.svg') ?>
-                    <p class="text-break">1KB5GaKuZZa3GyuRgAXZJT5jmpiwppe6Ag</p>
-                </div>
-                <div>
-                    <? include(get_template_directory() . '/img/btccash.svg') ?>
-                    <p class="text-break">qrr4nl9x2hrel637wqz0fz2u7pl082z4zsss6872rr</p>
-                </div>
-                <div>
-                    <? include(get_template_directory() . '/img/ethereum.svg') ?>
-                    <p class="text-break">0x7F239Ff79c3151b29461A608F95ecfD4F994956E</p>
+                    <div>
+                        <? include(get_template_directory() . '/img/btc.svg') ?>
+                        <p class="text-break">18e5aXfp2gBny56fM5ZqddYgYbZfwZebsu</p>
+                    </div>
+                    <div>
+                        <? include(get_template_directory() . '/img/btccash.svg') ?>
+                        <p class="text-break">qrr4nl9x2hrel637wqz0fz2u7pl082z4zsss6872rr</p>
+                    </div>
+                    <div>
+                        <? include(get_template_directory() . '/img/ethereum.svg') ?>
+                        <p class="text-break">0x7F239Ff79c3151b29461A608F95ecfD4F994956E</p>
+                    </div>
                 </div>
             </div>
         </div>
