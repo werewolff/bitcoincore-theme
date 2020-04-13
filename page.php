@@ -8,10 +8,10 @@ get_header(); // подключаем header.php ?>
 <section>
     <div class="container-fluid bg-white rounded">
         <div class="row h-100">
-            <div id="menu-left" class="col col-md-4 col-lg-3 ml-n3 d-md-block">
+            <div id="menu-left" class="col col-md-4 col-lg-3 col-xl d-md-block">
                 <?php get_sidebar('nav'); ?>
             </div>
-            <div class="col">
+            <div class="col col-md-8 col-lg-9">
                 <div class="row">
                     <div class="py-3 <?php content_class_by_sidebar(); // функция подставит класс в зависимости от того есть ли сайдбар, лежит в functions.php ?>">
                         <?php if (have_posts()) while (have_posts()) : the_post(); // старт цикла ?>
